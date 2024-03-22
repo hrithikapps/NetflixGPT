@@ -59,8 +59,6 @@ const Login = () => {
             .catch((error) => {
               setErrorMessage(error);
             });
-
-          console.log("User", user);
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -78,9 +76,6 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           navigate("/browse");
-          console.log(user);
-
-          // ...
         })
         .catch((error) => {
           const errorCode = error.code;
