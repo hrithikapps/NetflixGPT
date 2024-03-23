@@ -8,8 +8,8 @@ const MainContainer = () => {
   if (!movies) {
     return;
   }
-
-  const mainMovie = movies[5];
+  const randomNumber = Math.floor(Math.random() * 19) + 1;
+  const mainMovie = movies[randomNumber];
   const { original_title, overview, id } = mainMovie;
   return (
     <div>
