@@ -43,10 +43,10 @@ const Header = () => {
       });
   };
   return (
-    <div className="absolute py-2 px-8 z-10 top-0 bg-gradient-to-b from-black w-screen flex justify-between">
-      <img className="w-44 " src={LOGO} alt="Logo" />
+    <div className="scrollbar-hide absolute py-2 px-8 z-10 top-0 bg-gradient-to-b from-black w-screen flex justify-between">
+      <img className="w-44 scrollbar-hide" src={LOGO} alt="Logo" />
       {user && (
-        <div className="flex py-2 px-4 h-5 w-5 ">
+        <div className="flex py-2 px-4 h-7 ">
           <img src={user.photoUrl} alt="Avatar" />
           <button onClick={handleSignOut} className="text-white font-bold">
             Sign Out
