@@ -4,8 +4,9 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
-import { LOGO } from "../utils/constants";
+import { LOGO, SUPPORTED_LANGUAGES } from "../utils/constants";
 import { toggleGPTsearch } from "../utils/GPTslice";
+import { changeLanguage } from "../utils/configSlice";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -39,6 +40,10 @@ const Header = () => {
     dispatch(toggleGPTsearch());
   };
 
+  const handleLanguageChange = (e) => {
+    dispatch(changeLanguage(e.target.value));
+  };
+
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
@@ -53,6 +58,18 @@ const Header = () => {
       <img className="w-44 scrollbar-hide" src={LOGO} alt="Logo" />
       {user && (
         <div className="flex py-2 px-3 justify-center items-center">
+          <select
+            onChange={handleLanguageChange}
+            className="p-2 px-5 m-2 bg-gray-500 text-white"
+          >
+            {SUPPORTED_LANGUAGES.map((lang) => {
+              return (
+                <option key={lang.identifier} value={lang.identifier}>
+                  {lang.name}
+                </option>
+              );
+            })}
+          </select>
           <button
             onClick={handleGPTSearchClick}
             className="rounded-md px-3 py-2 bg-green-700"
