@@ -40,6 +40,10 @@ const Header = () => {
     dispatch(toggleGPTsearch());
   };
 
+  const GPTsearchVisible = useSelector(
+    (store) => store.gpt.ToggleGPTsearchView
+  );
+
   const handleLanguageChange = (e) => {
     dispatch(changeLanguage(e.target.value));
   };
@@ -58,23 +62,25 @@ const Header = () => {
       <img className="w-44 scrollbar-hide" src={LOGO} alt="Logo" />
       {user && (
         <div className="flex py-2 px-3 justify-center items-center">
-          <select
-            onChange={handleLanguageChange}
-            className="p-2 px-5 m-2 bg-gray-500 text-white"
-          >
-            {SUPPORTED_LANGUAGES.map((lang) => {
-              return (
-                <option key={lang.identifier} value={lang.identifier}>
-                  {lang.name}
-                </option>
-              );
-            })}
-          </select>
+          {GPTsearchVisible && (
+            <select
+              onChange={handleLanguageChange}
+              className="p-2 px-5 m-2 bg-gray-500 text-white"
+            >
+              {SUPPORTED_LANGUAGES.map((lang) => {
+                return (
+                  <option key={lang.identifier} value={lang.identifier}>
+                    {lang.name}
+                  </option>
+                );
+              })}
+            </select>
+          )}
           <button
             onClick={handleGPTSearchClick}
             className="rounded-md px-3 py-2 bg-green-700"
           >
-            GPT Search
+            {GPTsearchVisible ? "Homepage" : "GPT Search"}
           </button>
           <img src={user.photoUrl} alt="Avatar" />
           <button onClick={handleSignOut} className="text-white font-bold">
