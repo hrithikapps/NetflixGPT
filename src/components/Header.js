@@ -58,10 +58,14 @@ const Header = () => {
       });
   };
   return (
-    <div className="scrollbar-hide absolute py-2 px-8 z-10 top-0 bg-gradient-to-b from-black w-screen flex justify-between">
-      <img className="w-44 scrollbar-hide" src={LOGO} alt="Logo" />
+    <div className="absolute scrollbar-hide w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between">
+      <img
+        className="scrollbar-hide w-44 mx-auto md:mx-0"
+        src={LOGO}
+        alt="Logo"
+      />
       {user && (
-        <div className="flex py-2 px-3 justify-center items-center">
+        <div className="flex p-2 justify-between">
           {GPTsearchVisible && (
             <select
               onChange={handleLanguageChange}
@@ -82,7 +86,11 @@ const Header = () => {
           >
             {GPTsearchVisible ? "Homepage" : "GPT Search"}
           </button>
-          <img src={user.photoUrl} alt="Avatar" />
+          <img
+            className="hidden md:block w-12 h-12"
+            src={user.photoUrl}
+            alt="Avatar"
+          />
           <button onClick={handleSignOut} className="text-white font-bold">
             Sign Out
           </button>
