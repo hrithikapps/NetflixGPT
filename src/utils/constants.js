@@ -4,16 +4,11 @@ export const LOGO =
 export const USER_AVATAR =
   "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png?20201013161117";
 
-const TMDB_API_KEY = process.env.REACT_APP_TMDB_KEY;
-
 export const API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2YTQ1ZTYwZmMyMDBmZjcwODc5Y2VlZGMyNTE0MzJjZCIsInN1YiI6IjY1ZWRhMzE4NDQ3ZjljMDE2NDVmYzJkNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lEazGp3c-rOpAdkY9JWiffihxJqWlrCu3Z5K4V19F4E",
-
-    // Authorization: `Bearer ${TMDB_API_KEY}`,
+    Authorization: "Bearer " + process.env.REACT_APP_TMDB_KEY,
   },
 };
 
