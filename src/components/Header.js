@@ -4,7 +4,7 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
-import { LOGO, SUPPORTED_LANGUAGES } from "../utils/constants";
+import { LOGO, SUPPORTED_LANGUAGES, USER_AVATAR } from "../utils/constants";
 import { toggleGPTsearch } from "../utils/GPTslice";
 import { changeLanguage } from "../utils/configSlice";
 
@@ -65,11 +65,11 @@ const Header = () => {
         alt="Logo"
       />
       {user && (
-        <div className="flex p-2 justify-between">
+        <div className="flex p-2 justify-between gap-2 items-center">
           {GPTsearchVisible && (
             <select
               onChange={handleLanguageChange}
-              className="p-2 px-5 m-2 bg-gray-500 text-white"
+              className="py-1 px-7 m-2 bg-gray-500 text-white"
             >
               {SUPPORTED_LANGUAGES.map((lang) => {
                 return (
@@ -80,15 +80,14 @@ const Header = () => {
               })}
             </select>
           )}
-          <button
-            onClick={handleGPTSearchClick}
-            className="rounded-md px-3 py-2 bg-green-700"
-          >
-            {GPTsearchVisible ? "Homepage" : "GPT Search"}
-          </button>
+          <div onClick={handleGPTSearchClick}>
+            <button className="rounded-md px-3 py-2 bg-green-700">
+              {GPTsearchVisible ? "Homepage" : "GPT Search"}
+            </button>
+          </div>
           <img
             className="hidden md:block w-12 h-12"
-            src={user.photoUrl}
+            src={USER_AVATAR}
             alt="Avatar"
           />
           <button onClick={handleSignOut} className="text-white font-bold">
