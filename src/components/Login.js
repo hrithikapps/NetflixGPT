@@ -94,9 +94,9 @@ const Login = () => {
       />
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="w-full md:w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80"
+        className="h-3/4 w-full md:w-3/12 absolute p-9 bg-black my-24 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80"
       >
-        <h1 className="font-bold text-3xl py-4">
+        <h1 className="font-bold text-2xl py-1">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
         {!isSignInForm && (
@@ -119,7 +119,7 @@ const Login = () => {
           className="p-4 my-4 w-full bg-gray-700"
           placeholder="Password"
         />
-        <p className="text-lg font-bold text-red-600 py-2">{errorMessage}</p>
+        <p className="text-sm font-bold text-red-600 py-2">{errorMessage}</p>
         <button
           onClick={handleButtonClick}
           className="p-4 my-6 bg-red-700 w-full rounded-md"
